@@ -29,12 +29,20 @@ else{
                  
                 <div style="justify-content: space-between;"> 
                  <div > Quantity: 
-                     <span id="qtyButton"><FeatherMinus Color="red" Size="10"/></span> 
+                     <span id="qtyButton">
+                         <FeatherMinus Color="red" Size="10"/>
+                         </span> 
                      <span>@item.Quantity</span> 
-                     <span id="qtyButton" ><FeatherPlus Color="green" Size="10"/></span> 
+                     <span id="qtyButton" >
+                         <FeatherPlus Color="green" Size="10"/>
+                         </span> 
                     
                  </div>
-                  <span id="removeButton"><FeatherTrash2 Size="10" Color="orangered"/>Remove</span>
+                  <span 
+                      id="removeButton" 
+                      @onclick="()=>Delete(item.Id)">
+                      <FeatherTrash2 Size="20" Color="orangered"/>
+                      Remove</span>
             </div>
             </div>
             </div>
@@ -45,4 +53,11 @@ else{
         </div>
        }
     </div>
+}
+
+@code{
+    public async void Delete(int id)
+    {
+        await DeleteItem(id);
+    }
 }

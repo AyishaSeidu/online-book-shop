@@ -12,7 +12,7 @@ namespace OnlineBookShop.Web.Pages.Bases
         [Parameter]
         public int UserID { get; set; }
 
-        public IEnumerable<CartItemReadDTO> CartItems { get; set; }
+        public List<CartItemReadDTO> CartItems { get; set; }
 
         public string ErrorMessage { get; set; }
 
@@ -29,5 +29,30 @@ namespace OnlineBookShop.Web.Pages.Bases
             }
         }
 
+        protected async Task DeleteItem(int id)
+        {
+            try
+            {
+                var cartItem = await CartHttpRepo.DeleteItem(id);
+                RemoveItem(id);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private CartItemReadDTO GetCartItem(int id)
+        {
+            return CartItems.FirstOrDefault(c => c.Id == id);
+        }
+
+        private void RemoveItem(int id)
+        {
+            var item = GetCartItem(id);
+            CartItems.Remove(item);
+        }
     }
 }

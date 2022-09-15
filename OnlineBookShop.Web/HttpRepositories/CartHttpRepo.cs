@@ -49,7 +49,7 @@ namespace OnlineBookShop.Web.HttpRepositories
             }
         }
 
-        public async Task<IEnumerable<CartItemReadDTO>> GetItems(int userID)
+        public async Task<List<CartItemReadDTO>> GetItems(int userID)
         {
             
             try
@@ -59,11 +59,40 @@ namespace OnlineBookShop.Web.HttpRepositories
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
                     {
-                        return Enumerable.Empty<CartItemReadDTO>();
+                        return Enumerable.Empty<CartItemReadDTO>().ToList();
                     }
                     else
                     {
-                        return await response.Content.ReadFromJsonAsync<IEnumerable<CartItemReadDTO>>();
+                        return await response.Content.ReadFromJsonAsync<List<CartItemReadDTO>>();
+                    }
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Http status - {response.StatusCode} Message - {message}");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<CartItemReadDTO> DeleteItem(int itemID)
+        {
+            try
+            {
+               var response =  await _httpClient.DeleteAsync($"api/Cart/{itemID}");
+                if (response.IsSuccessStatusCode)
+                {
+                    if(response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return default(CartItemReadDTO);
+                    }
+                    else
+                    {
+                        return await response.Content.ReadFromJsonAsync<CartItemReadDTO>();
                     }
                 }
                 else

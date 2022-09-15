@@ -198,14 +198,14 @@
       "netstandard.dll": "sha256-CvlfDmNgFRYT7l\/xZKu91FlbTFyLG\/5cH7YX63k9ghE=",
       "System.Private.CoreLib.dll": "sha256-aF4imeOpA59D6F5qCLabzkeY7MvRZzNYzavhB\/bdxvM=",
       "OnlineBookShop.Models.dll": "sha256-eRmQXGj9knu+qmD5W3BvTXEhTBZS7fUTpdL2ebzjWGs=",
-      "OnlineBookShop.Web.dll": "sha256-+T+FQNNVszQspsmqXzUb\/C2XPJa4RmI8ColPVjeDRek="
+      "OnlineBookShop.Web.dll": "sha256-RAqmCxAY9xjnEGX4pzU3RNMv2qat1JZWb+19ZNYfjQg="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "OnlineBookShop.Models.pdb": "sha256-qd4TmjqgbAcjHfYTMnf81rRAuPW+l5GQcKbXrnfUedM=",
-      "OnlineBookShop.Web.pdb": "sha256-PXPfyapoVJRQ6B1PFdBhx7IFPRXZyP9ND7VKEmXyGBs="
+      "OnlineBookShop.Web.pdb": "sha256-Sg+JGsATTt99+TwnNKivD88ZQCZcr59CzVZN06Q7d4g="
     },
     "runtime": {
       "dotnet.6.0.7.3tezda4qof.js": "sha256-pvJcJ6jtDSfxgXm03QYRTm4aAi9PSzMSJODReHtvASY=",

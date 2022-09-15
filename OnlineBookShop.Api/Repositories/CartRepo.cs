@@ -52,30 +52,22 @@ namespace OnlineBookShop.Api.Repositories
 
         }
 
-        public Task<CartItem> DeleteItem(int cartID)
+        public async Task<CartItem> DeleteItem(int cartItemID)
         {
-            throw new NotImplementedException();
+            var item = await _dbContext.CartItems.FirstOrDefaultAsync(c => c.Id == cartItemID);
+            if (item != null)
+            {
+                _dbContext.CartItems.Remove(item);
+                _dbContext.SaveChanges();
+                return item;
+            }
+            return null; 
         }
 
         public async Task<IEnumerable<CartItem>> GetCartItems(int userID)
         {
-            //var items = await (from item in _dbContext.CartItems
-            //                   join cart in _dbContext.Carts on item.CartID equals cart.Id
-            //                   join user in _dbContext.Users on cart.UserID equals user.Id
-            //                   where cart.UserID == userID
-            //                   select new CartItem
-            //                   {
-            //                       Id = item.Id,
-            //                       CartID = cart.Id,
-            //                       BookID = item.BookID,
-            //                       Quantity = item.Quantity,
-            //                       Book = item.Book,
-            //                   }
-            //                   ).ToListAsync();
-            //Console.WriteLine(items);
             var items = await _dbContext.CartItems.Include(c => c.Cart).Where(c=>c.Cart.UserID==userID).Include(c => c.Book).ThenInclude(b => b.Author).ToListAsync();
             return items;
-            //var items = await _dbContext.CartItems.Include(cartitem => cartitem.Cart).Where(cartitem=>cartitem.Cart.Wh)
         }
 
         public async Task<CartItem> GetItem(int cartID)

@@ -1,0 +1,44 @@
+﻿* {
+    font-size: small;
+}
+
+#cartItem {
+    display: flex;
+    margin: 1rem;
+    border-bottom: 0.05rem solid lightgrey;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+#cartItemImage {
+    padding: 3rem;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#removeButton {
+    color: orangered;
+    width: fit-content;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 0.8rem;
+    margin: auto;
+    cursor: pointer;
+    align-items: flex-end;
+}
+/*
+#removeButton:hover {
+    background-color: lightsalmon;
+    border-radius: 0.3rem;
+
+}*/
+
+#qtyButton {
+    font-weight: bold;
+    width: fit-content;
+    text-align: center;
+    cursor: pointer;
+}
+    /*#qtyButton:hover {
+        font-size: 1.5rem;
+    }*/

@@ -1,0 +1,71 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = browser
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = true
+build_property.IncludeAllContentForSelfExtract = 
+build_property.RootNamespace = OnlineBookShop.Web
+build_property.RootNamespace = OnlineBookShop.Web
+build_property.ProjectDir = C:\Users\Ayishetu Seidu\OOP_Tutorials\Fundamentals\OnlineBookShop\OnlineBookShop.Web\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Ayishetu Seidu\OOP_Tutorials\Fundamentals\OnlineBookShop\OnlineBookShop.Web
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/BookDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va0RldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/Books.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/ErrorMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3JNZXNzYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/Cart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-vzg9llqz6f
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/Components/DisplayBooks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50c1xEaXNwbGF5Qm9va3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-e6hmxo5jyj
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Pages/Spinner.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3Bpbm5lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-2zkd2mxpoz
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ks80lgi40o
+
+[C:/Users/Ayishetu Seidu/OOP_Tutorials/Fundamentals/OnlineBookShop/OnlineBookShop.Web/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4l5tbwgrbr

@@ -1,0 +1,40 @@
+﻿@page "/bookdetails/{id:int}"
+@inherits BookDetailsBase
+
+@if(Book==null && ErrorMessage==null) 
+{
+    <div style="display: flex; flex-direction: column; justify-content: center">
+    <h3>Loadding book details...</h3>
+    <Spinner/>
+    </div>
+}
+else if(ErrorMessage!=null)
+{
+    <ErrorMessage Message="@ErrorMessage"/>
+}
+else
+{
+    <h3 class="mb-3">Book Details</h3>
+    <div class="row" style="margin: auto 2rem">
+        <div class="col" 
+            style="padding: 20%;
+                   align-content: center;
+                   background-image: url(@Book.ImageURL); 
+                   background-repeat: no-repeat; 
+                   background-size: contain;
+                   background-position: center;
+                   "/>
+            <div class="col-md-6" style="height: 70%">
+                <h3>@Book.Title</h3>
+                <p class="mb-4">by @Book.AuthorName (@Book.YearPublished) </p>
+                <p class="mb-4">genre: @Book.GenreName</p>
+                 <p class="mb-4">
+                <b >GHS @Book.Price (@Book.Quantity items in stock)</b>
+                <div class="btn btn-success" onclick="()=>(@AddToCart(new CartItemCreateDTO
+                                                        {CartID=1, BookID=@Book.Id, Quantity=1}))"
+                >Add to cart</div>
+            </p>
+            </div>
+
+    </div>
+}

@@ -1,0 +1,48 @@
+﻿@page "/cart"
+
+@inherits CartBase
+
+@if(CartItems==null && ErrorMessage!=null)
+{
+    <ErrorMessage Message="@ErrorMessage" />
+}
+else if(CartItems==null && ErrorMessage == null)
+{
+    <div class="mb-3">
+        <Spinner/>
+        <div>Loading cart items...</div>
+    </div>
+}
+else{
+    <div style="padding: 0.5rem" class="card">
+        <h5>Cart Items (@CartItems.Count())</h5>
+        @foreach (var item in CartItems)
+       {
+           <div id="cartItem">
+                
+
+            <div style="display: flex">
+                <div id="cartItemImage" style="background-image: url(@item.ImageURL)"/>
+                <div>
+                <span>@item.BookTitle</span><br/>
+                <span style="color: lightgray">By:</span><span>@item.AuthorName</span>
+                 
+                <div style="justify-content: space-between;"> 
+                 <div > Quantity: 
+                     <span id="qtyButton"><FeatherMinus Color="red" Size="10"/></span> 
+                     <span>@item.Quantity</span> 
+                     <span id="qtyButton" ><FeatherPlus Color="green" Size="10"/></span> 
+                    
+                 </div>
+                  <span id="removeButton"><FeatherTrash2 Size="10" Color="orangered"/>Remove</span>
+            </div>
+            </div>
+            </div>
+            
+                <div style="font-weight: bold">GHS @item.Price</div>
+
+  
+        </div>
+       }
+    </div>
+}

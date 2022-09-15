@@ -1,0 +1,17 @@
+﻿@inherits BookDisplayBase
+
+@foreach(var item in Books)
+{
+    <div class="col-md-3 mb-2" style="justify-content: space-evenly">
+        <a href="/bookdetails/@item.Id">
+            <div class="card">
+                @*<img class="img-thumbnail" src="@item.ImageURL"/>*@
+                <div class="book-image" style="background-image: url(@item.ImageURL);"/>
+                <div class="card-body" style="margin: auto;">
+                    <h6 class="card-title" style="height: 50%; text-overflow:ellipsis" >@item.Title</h6>
+                    <p class="card-text">GHS @item.Price </p>
+                </div>
+            </div>
+        </a>
+        </div>
+}

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\Documentaries\the_darwin_award.jpg" />
+    <None Include="wwwroot\Images\Fantasies\fantastic_beasts.jpg" />
+    <None Include="wwwroot\Images\Fantasies\harry_porter_and_the_sorcerers_stone.jpg" />
+    <None Include="wwwroot\Images\Novels\americana.jpg" />
+    <None Include="wwwroot\Images\Novels\pride_and_prejudice.jpg" />
+    <None Include="wwwroot\Images\Playwrights\our_husband_has_gone_mad_again.jpg" />
+    <None Include="wwwroot\Images\Playwrights\the_gods_are_not_to_blame.jpg" />
+    <None Include="wwwroot\Images\Sciences\cosmos.jpg" />
+    <None Include="wwwroot\Images\Sciences\the_demon_haunted_world.jpg" />
+    <None Include="wwwroot\Images\Wealth\the_psychology_of_money.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Feather.Blazor" Version="1.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.7" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineBookShop.Models\OnlineBookShop.Models.csproj" />
+  </ItemGroup>
+
+</Project>

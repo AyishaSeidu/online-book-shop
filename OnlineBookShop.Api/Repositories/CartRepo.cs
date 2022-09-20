@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.EntityFrameworkCore;
 using OnlineBookShop.Api.Data;
 using OnlineBookShop.Api.Models;
 using OnlineBookShop.Models.DTOs;
@@ -82,6 +83,22 @@ namespace OnlineBookShop.Api.Repositories
             {
                item.Quantity = updateDto.Quantity;
                 _dbContext.SaveChanges();
+                return item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<CartItem> UpdateItemQuantityPatch(int itemId, JsonPatchDocument quantityUpdateDTO)
+        {
+            var item = await _dbContext.CartItems.FindAsync(itemId);
+
+            if(item != null)
+            {
+               quantityUpdateDTO.ApplyTo(item);
+                await _dbContext.SaveChangesAsync();
                 return item;
             }
             else

@@ -75,9 +75,19 @@ namespace OnlineBookShop.Api.Repositories
             return await _dbContext.CartItems.Include(c => c.Book).Where(c => c.CartID == cartID).Include(c=>c.Book).ThenInclude(b=>b.Author).FirstOrDefaultAsync();
         }
 
-        public Task<CartItem> UpdateItemQuantity(int cartID, CartItemQtyUpdateDTO quantity)
+        public async Task<CartItem> UpdateItemQuantity(CartItemQtyUpdateDTO updateDto)
         {
-            throw new NotImplementedException();
+            var item = await _dbContext.CartItems.FirstOrDefaultAsync(ci => ci.Id == updateDto.CartItemId);
+            if (item != null)
+            {
+               item.Quantity = updateDto.Quantity;
+                _dbContext.SaveChanges();
+                return item;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

@@ -14,7 +14,9 @@ else if(CartItems==null && ErrorMessage == null)
     </div>
 }
 else{
-    <div style="padding: 0.5rem" class="card">
+    if (CartItems.Count > 0)
+    {
+           <div style="padding: 0.5rem" class="card">
         <h5>Cart Items (@CartItems.Count())</h5>
         @foreach (var item in CartItems)
        {
@@ -29,12 +31,20 @@ else{
                  
                 <div style="justify-content: space-between;"> 
                  <div > Quantity: 
-                     <span id="qtyButton"><FeatherMinus Color="red" Size="10"/></span> 
+                     <span id="qtyButton">
+                         <FeatherMinus Color="red" Size="10"/>
+                         </span> 
                      <span>@item.Quantity</span> 
-                     <span id="qtyButton" ><FeatherPlus Color="green" Size="10"/></span> 
+                     <span id="qtyButton" >
+                         <FeatherPlus Color="green" Size="10"/>
+                         </span> 
                     
                  </div>
-                  <span id="removeButton"><FeatherTrash2 Size="10" Color="orangered"/>Remove</span>
+                  <span 
+                      id="removeButton" 
+                      @onclick="()=>DeleteItem(item.Id)">
+                      <FeatherTrash2 Size="20" Color="orangered"/>
+                      Remove</span>
             </div>
             </div>
             </div>
@@ -44,5 +54,11 @@ else{
   
         </div>
        }
-    </div>
+        </div>
+    }
+    else
+    {
+        <h3>There are no items in your cart</h3>
+    }
+
 }

@@ -22,16 +22,16 @@
     font-weight: bold;
     font-style: italic;
     font-size: 0.8rem;
-    margin: auto;
     cursor: pointer;
     align-items: flex-end;
+    padding: 0.4rem 0.2rem 0.4rem 0;
+    border-radius: 0.2rem;
 }
-/*
-#removeButton:hover {
-    background-color: lightsalmon;
-    border-radius: 0.3rem;
 
-}*/
+#removeButton:hover {
+    background-color: lightgray;
+
+}
 
 #qtyButton {
     font-weight: bold;

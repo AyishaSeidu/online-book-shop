@@ -4,7 +4,9 @@ namespace OnlineBookShop.Web.HttpRepositories.Contracts
 {
     public interface ICartHttpRepo
     {
-        public Task<IEnumerable<CartItemReadDTO>> GetItems(int UserID);
+        public Task<List<CartItemReadDTO>> GetItems(int UserID);
         public Task<CartItemReadDTO> AddItem(CartItemCreateDTO item);
+
+        public Task<CartItemReadDTO> DeleteItem(int id);
     }
 }

@@ -66,7 +66,7 @@ namespace OnlineBookShop.Api.Controller
                 }
                 else
                 {
-                    return CreatedAtAction(nameof(GetItem), new {id=newCartItem.Id}, _mapper.Map<CartItemCreateDTO>(newCartItem));
+                    return CreatedAtAction(nameof(GetItem), new {id=newCartItem.Id}, _mapper.Map<CartItemReadDTO>(newCartItem));
                 }
             }
             catch (Exception e)
@@ -76,6 +76,29 @@ namespace OnlineBookShop.Api.Controller
             }
             
 
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CartItemReadDTO>> DeleteCartItem(int id)
+        {
+            try
+            {
+                var results = await _cartRepo.DeleteItem(id);
+                if(results == null)
+                {
+                    return NoContent();
+                }
+                else
+                {
+                    return Ok(_mapper.Map<CartItemReadDTO>(results));
+                }
+        
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

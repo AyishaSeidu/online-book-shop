@@ -14,7 +14,9 @@ else if(CartItems==null && ErrorMessage == null)
     </div>
 }
 else{
-    <div style="padding: 0.5rem" class="card">
+    if (CartItems.Count > 0)
+    {
+           <div style="padding: 0.5rem" class="card">
         <h5>Cart Items (@CartItems.Count())</h5>
         @foreach (var item in CartItems)
        {
@@ -40,7 +42,7 @@ else{
                  </div>
                   <span 
                       id="removeButton" 
-                      @onclick="()=>Delete(item.Id)">
+                      @onclick="()=>DeleteItem(item.Id)">
                       <FeatherTrash2 Size="20" Color="orangered"/>
                       Remove</span>
             </div>
@@ -52,12 +54,11 @@ else{
   
         </div>
        }
-    </div>
-}
-
-@code{
-    public async void Delete(int id)
-    {
-        await DeleteItem(id);
+        </div>
     }
+    else
+    {
+        <h3>There are no items in your cart</h3>
+    }
+
 }

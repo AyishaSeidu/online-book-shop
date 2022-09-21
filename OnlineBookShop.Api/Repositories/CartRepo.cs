@@ -76,24 +76,24 @@ namespace OnlineBookShop.Api.Repositories
             return await _dbContext.CartItems.Include(c => c.Book).Where(c => c.CartID == cartID).Include(c=>c.Book).ThenInclude(b=>b.Author).FirstOrDefaultAsync();
         }
 
-        public async Task<CartItem> UpdateItemQuantity(CartItemQtyUpdateDTO updateDto)
-        {
-            var item = await _dbContext.CartItems.FirstOrDefaultAsync(ci => ci.Id == updateDto.CartItemId);
-            if (item != null)
-            {
-               item.Quantity = updateDto.Quantity;
-                _dbContext.SaveChanges();
-                return item;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //public async Task<CartItem> UpdateItemQuantity(CartItemQtyUpdateDTO updateDto)
+        //{
+        //    var item = await _dbContext.CartItems.FirstOrDefaultAsync(ci => ci.Id == updateDto.CartItemId);
+        //    if (item != null)
+        //    {
+        //       item.Quantity = updateDto.Quantity;
+        //        _dbContext.SaveChanges();
+        //        return item;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
 
-        public async Task<CartItem> UpdateItemQuantityPatch(int itemId, JsonPatchDocument quantityUpdateDTO)
+        public async Task<CartItem> UpdateItemQuantity(int itemId, JsonPatchDocument quantityUpdateDTO)
         {
-            var item = await _dbContext.CartItems.FindAsync(itemId);
+            var item = await _dbContext.CartItems.Include(c => c.Book).Include(c => c.Book).ThenInclude(b => b.Author).FirstOrDefaultAsync(i=>i.Id== itemId);
 
             if(item != null)
             {

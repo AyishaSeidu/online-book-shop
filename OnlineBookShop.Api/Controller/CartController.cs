@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using OnlineBookShop.Api.Models;
 using OnlineBookShop.Api.Repositories;
@@ -93,6 +94,28 @@ namespace OnlineBookShop.Api.Controller
                     return Ok(_mapper.Map<CartItemReadDTO>(results));
                 }
         
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPatch("{itemId}")]
+        public async Task<ActionResult<CartItemReadDTO>> UpdateItemQuantity(int itemId, JsonPatchDocument jsonPatch)
+        {
+            try
+            {
+                var results = await _cartRepo.UpdateItemQuantity(itemId, jsonPatch);
+                if (results == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    return Ok(_mapper.Map<CartItemReadDTO>(results));
+                }
             }
             catch (Exception)
             {

@@ -78,7 +78,7 @@ namespace OnlineBookShop.Api.Repositories
 
         public async Task<CartItem> UpdateItemQuantity(int id, CartItemQtyUpdateDTO updateDto)
         {
-            var item = await _dbContext.CartItems.FirstOrDefaultAsync(ci => ci.Id == id);
+            var item = await _dbContext.CartItems.Include(ci=>ci.Book).ThenInclude(b=>b.Author).FirstOrDefaultAsync(ci => ci.Id == id);
             if (item != null)
             {
                 item.Quantity = updateDto.Quantity;

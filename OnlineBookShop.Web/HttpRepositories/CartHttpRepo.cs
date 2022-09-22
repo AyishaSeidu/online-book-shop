@@ -21,7 +21,7 @@ namespace OnlineBookShop.Web.HttpRepositories
             try
             {
                 var httpContent = new StringContent(
-                    JsonSerializer.Serialize(item),
+                    System.Text.Json.JsonSerializer.Serialize(item),
                     Encoding.UTF8,
                     "application/json");
                 var response = await _httpClient.PostAsync("api/cart",httpContent);

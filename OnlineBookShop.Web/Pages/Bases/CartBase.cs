@@ -54,5 +54,25 @@ namespace OnlineBookShop.Web.Pages.Bases
             var item = GetCartItem(id);
             CartItems.Remove(item);
         }
+
+        protected async Task UpdateQuantity(int id, int quantity)
+        {
+            try
+            {
+                if (quantity <= 0)
+                {
+                    quantity = 1;
+                }
+                    var updateDTO = new CartItemQtyUpdateDTO { CartItemId = id, Quantity=quantity };
+                    var item = await CartHttpRepo.UpdateQuantity(updateDTO);  
+                    var indexOfItem = CartItems.FindIndex(itm=>itm.Id==id);
+                    CartItems[indexOfItem] = item;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

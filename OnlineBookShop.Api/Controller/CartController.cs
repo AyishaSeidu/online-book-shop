@@ -102,12 +102,34 @@ namespace OnlineBookShop.Api.Controller
             }
         }
 
-        [HttpPatch("{itemId}")]
-        public async Task<ActionResult<CartItemReadDTO>> UpdateItemQuantity(int itemId, JsonPatchDocument jsonPatch)
+        //[HttpPatch("{itemId}")]
+        //public async Task<ActionResult<CartItemReadDTO>> UpdateItemQuantity(int itemId, [FromBody] JsonPatchDocument<CartItemQtyUpdateDTO> jsonPatch)
+        //{
+        //    try
+        //    {
+        //        var results = await _cartRepo.UpdateItemQuantity(itemId, jsonPatch);
+        //        if (results == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            return Ok(_mapper.Map<CartItemReadDTO>(results));
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+
+        [HttpPatch("{itemId:int}")]
+        public async Task<ActionResult<CartItemReadDTO>> UpdateItemQuantity(int itemId, CartItemQtyUpdateDTO updateDTO)
         {
             try
             {
-                var results = await _cartRepo.UpdateItemQuantity(itemId, jsonPatch);
+                var results = await _cartRepo.UpdateItemQuantity(itemId, updateDTO);
                 if (results == null)
                 {
                     return NotFound();

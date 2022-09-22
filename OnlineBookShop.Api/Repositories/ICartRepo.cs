@@ -8,7 +8,8 @@ namespace OnlineBookShop.Api.Repositories
     {
         public Task<CartItem> AddItem(CartItemCreateDTO cartItem);
         //Task<CartItem> UpdateItemQuantity(CartItemQtyUpdateDTO quantity);
-        Task<CartItem> UpdateItemQuantity(int itemId, JsonPatchDocument quantity);
+        //Task<CartItem> UpdateItemQuantity(int itemId, JsonPatchDocument quantity);
+        Task<CartItem> UpdateItemQuantity(int itemId, CartItemQtyUpdateDTO quantity);
         Task<CartItem> DeleteItem(int cartItemID);  
         Task<CartItem> GetItem(int cartID);
         Task<IEnumerable<CartItem>> GetCartItems(int userID);

@@ -16,8 +16,9 @@ else if(CartItems==null && ErrorMessage == null)
 else{
     if (CartItems.Count > 0)
     {
-           <div style="padding: 0.5rem" class="card">
-        <h5>Cart Items (@CartItems.Count())</h5>
+        <div class="row">
+        <div style="padding: 0.5rem" class="card col">
+        <h1>Shopping Cart</h1>
         @foreach (var item in CartItems)
        {
            <div id="cartItem">
@@ -27,7 +28,7 @@ else{
                 <div id="cartItemImage" style="background-image: url(@item.ImageURL)"/>
                 <div>
                 <span>@item.BookTitle</span><br/>
-                <span style="color: lightgray">By:</span><span>@item.AuthorName</span>
+                <span style="color: gray">By:</span><span>@item.AuthorName</span>
                  
                 <div style="justify-content: space-between;"> 
                  <div > Quantity: 
@@ -55,6 +56,14 @@ else{
         </div>
        }
         </div>
+             <div class="col-md-3">
+                <div class="card" style="padding: 0.3rem; height: 15vh; justify-content: space-between">
+                    <div class="card-text">Subtotal (@TotalQuantity Items): <b>GHS @TotalPrice</b></div>
+                    <div class="btn btn-warning">Proceed to Checkout</div>
+                </div>
+            </div>
+        </div>
+
     }
     else
     {

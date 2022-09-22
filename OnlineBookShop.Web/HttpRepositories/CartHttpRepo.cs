@@ -1,4 +1,5 @@
-﻿using OnlineBookShop.Models.DTOs;
+﻿using Newtonsoft.Json;
+using OnlineBookShop.Models.DTOs;
 using OnlineBookShop.Web.HttpRepositories.Contracts;
 using System.Net.Http.Json;
 using System.Text;
@@ -99,6 +100,31 @@ namespace OnlineBookShop.Web.HttpRepositories
                 {
                     var message = await response.Content.ReadAsStringAsync();
                     throw new Exception($"Http status - {response.StatusCode} Message - {message}");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<CartItemReadDTO> UpdateQuantity(CartItemQtyUpdateDTO updateDTO)
+        {
+            try
+            {
+                var jsonRequest = JsonConvert.SerializeObject(updateDTO);
+                var requestContent = new StringContent(jsonRequest, Encoding.UTF8, "application/json-patch+json");
+                var response = await _httpClient.PatchAsync($"api/Cart/{updateDTO.CartItemId}", requestContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadFromJsonAsync<CartItemReadDTO>();
+                }
+                else
+                {
+                    var message = response.Content.ReadAsStringAsync();
+                    throw new Exception($"Http status - {response.StatusCode} Message - {message}"); 
                 }
             }
             catch (Exception)

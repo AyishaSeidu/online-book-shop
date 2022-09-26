@@ -16,6 +16,9 @@ namespace OnlineBookShop.Web.Pages.Bases
         protected override async Task OnInitializedAsync()
         {
             Books = await BookHttpRepo.GeAllBooks();
+            var cartItems = await CartHttpRepo.GetItems(HardCoded.UserId);
+            var totalQUantity = cartItems.Sum(i => i.Quantity);
+            CartHttpRepo.RaiseEventOnCartChange(totalQUantity);
         }
 
         protected IOrderedEnumerable<IGrouping<int, BookReadDTO>> GetGroupedBooksByGenre()

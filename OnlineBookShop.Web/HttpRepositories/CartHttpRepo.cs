@@ -11,6 +11,8 @@ namespace OnlineBookShop.Web.HttpRepositories
     {
         private readonly HttpClient _httpClient;
 
+        public event Action<int> OnCartChanged;
+
         public CartHttpRepo(HttpClient httpClient)
         {
             _httpClient = httpClient;
@@ -131,6 +133,14 @@ namespace OnlineBookShop.Web.HttpRepositories
             {
 
                 throw;
+            }
+        }
+
+        public void RaiseEventOnCartChange(int totalQuantity)
+        {
+            if(OnCartChanged != null)
+            {
+                OnCartChanged.Invoke(totalQuantity);
             }
         }
     }

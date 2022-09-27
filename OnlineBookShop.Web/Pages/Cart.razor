@@ -32,19 +32,16 @@ else{
                  
                 <div style="justify-content: space-between;"> 
                  <div > Quantity: 
-                     <span id="qtyButton" @onclick="()=>UpdateQuantity(item.Id, item.Quantity-1)" >
-                         <FeatherMinus Color="red" Size="10"/>
+                     <span class="oi oi-minus" style="color: red" id="qtyButton" @onclick="()=>UpdateQuantity(item.Id, item.Quantity-1)" >
                          </span> 
                      <span>@item.Quantity</span> 
-                     <span id="qtyButton" @onclick="()=>UpdateQuantity(item.Id, item.Quantity+1)">
-                         <FeatherPlus Color="green" Size="10"/>
+                     <span class="oi oi-plus" style="color: green" id="qtyButton" @onclick="()=>UpdateQuantity(item.Id, item.Quantity+1)">
                          </span> 
                     
                  </div>
                   <span 
-                      id="removeButton" 
+                      id="removeButton" class="oi oi-trash"
                       @onclick="()=>DeleteItem(item.Id)">
-                      <FeatherTrash2 Size="20" Color="orangered"/>
                       Remove</span>
             </div>
             </div>

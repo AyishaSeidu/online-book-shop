@@ -30,7 +30,7 @@ else
                 <p class="mb-4">genre: @Book.GenreName</p>
                  <p class="mb-4">
                 <b >GHS @Book.Price (@Book.Quantity items in stock)</b>
-                <div class="btn btn-success"  @onclick="()=>AddToCart(new CartItemCreateDTO{BookID=Book.Id, CartID=HardCoded.CartId, Quantity=1})" > Add to cart</div>
+                <div class="btn btn-success"  @onclick="()=>AddToCart(new CartItemCreateDTO{BookID=Book.Id, CartID=HardCoded.CartId, Quantity=1})" > Add to cart</div> 
             </p>
             </div>
 

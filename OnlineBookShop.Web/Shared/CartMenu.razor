@@ -1,7 +1,7 @@
 ﻿@inject ICartHttpRepo CartRepo
 @implements IDisposable 
 
-<span><a href="/cart"><FeatherShoppingCart Color="orange"/>@cartItemCount</a></span>
+<a style="color: orangered" href="/cart"><span class="oi oi-cart"/>@cartItemCount</a>
 
 @code {
     private int cartItemCount = 0;

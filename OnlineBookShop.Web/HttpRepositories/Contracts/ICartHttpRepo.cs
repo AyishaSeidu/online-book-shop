@@ -9,5 +9,9 @@ namespace OnlineBookShop.Web.HttpRepositories.Contracts
 
         public Task<CartItemReadDTO> UpdateQuantity(CartItemQtyUpdateDTO updateDTO);
         public Task<CartItemReadDTO> DeleteItem(int id);
+
+        event Action<int> OnCartChanged;
+
+        void RaiseEventOnCartChange(int totalQuantity);
     }
 }

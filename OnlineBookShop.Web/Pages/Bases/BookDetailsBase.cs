@@ -18,6 +18,8 @@ namespace OnlineBookShop.Web.Pages.Bases
         public BookReadDTO Book { set; get; }
 
         public string ErrorMessage { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -38,6 +40,7 @@ namespace OnlineBookShop.Web.Pages.Bases
             try
             {
                 var item = await CartHttpRepo.AddItem(newCartItem);
+                NavigationManager.NavigateTo("/cart");
 
             }
             catch (Exception)

@@ -1,0 +1,24 @@
+﻿@inject ICartHttpRepo CartRepo
+@implements IDisposable 
+
+<a style="color: orangered" href="/cart"><span class="oi oi-cart"/>@cartItemCount</a>
+
+@code {
+    private int cartItemCount = 0;
+
+    protected override void OnInitialized()
+    {
+        CartRepo.OnCartChanged += CartChanged;
+    }
+
+    protected void CartChanged(int totalQuantity)
+    {
+        cartItemCount = totalQuantity;
+        StateHasChanged();
+    }
+
+    void IDisposable.Dispose()
+    {
+        CartRepo.OnCartChanged -= CartChanged;
+    }
+}

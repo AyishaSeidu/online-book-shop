@@ -1,0 +1,56 @@
+﻿@page "/order-confirmation"
+@inherits CartBase
+
+<h3 style="margin-bottom: 2rem">Purchase Confirmation</h3>
+
+@if(CartItems==null && ErrorMessage!=null)
+{
+    <ErrorMessage Message="@ErrorMessage" />
+}
+else if(CartItems==null && ErrorMessage == null)
+{
+    <div>Loading order details...</div>
+}
+else
+{
+      <div class="row" style="justify-content: space-between" >
+          <div class="col-md-4">
+        <h5>Order Summary</h5>
+        <table class="table" style="text-align: left">
+        <thead>
+        <tr>
+        <th scope="col">Book</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        </tr>
+        </thead>
+
+        <tbody>
+                @foreach(var item in CartItems)
+                {
+                   <tr>
+                  <td>@item.BookTitle</td>
+                  <td>@item.Quantity</td>
+                  <td>@item.TotalPrice</td>
+                   </tr>
+                }
+            </tbody>
+        </table>
+        <div class="card alert-info" style="width: 100%; display: flex" >
+            <div class="mb-3" ><b>Total: </b> </div>
+            <div><b style="font-size: 1.5rem" class="mb-3">GHS @TotalPrice</b></div>
+        </div>
+        </div>
+        
+        <div class="col-md-3" style="justify-content: space-between">
+
+            <button class="btn btn-secondary">Pay Later</button>
+
+            <button class="btn btn-primary" disabled>Pay Now</button>
+
+        </div>
+    </div>
+
+
+}
+

@@ -106,7 +106,7 @@ namespace OnlineBookShop.Web.Pages.Bases
         protected void ConfirmPayment()
         {
 
-                NavigationManager.NavigateTo("/order-confirmation");
+                NavigationManager.NavigateTo("/checkout");
             
         }
     }

@@ -10,6 +10,6 @@ namespace OnlineBookShop.Api.Repositories
         public Task<IEnumerable<Genre>> GetGenresAsync();
         public Task<Book> GetBookByIdAsync(int id);
         public Task<Author> GetAuthorByIdAsync(int id);
-        public Task<Genre> GetGenreByIdAsync(int id);
+        public Task<IEnumerable<Book>> GetBooksByGenreId(int id);
     }
 }

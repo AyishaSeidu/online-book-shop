@@ -10,15 +10,18 @@ else if(Genres==null & ErrorMessage!=null)
 }
 else
 {
+            <ul class="oi-list-rich">&nbsp; Genres
     @foreach(var genre in Genres)
     {
         var link = $"/Genres/{genre.Id}";
+
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="@link">
-                <span>@genre.Name</span>
+                <span></span>&nbsp; @genre.Name 
             </NavLink>
         </div>
-    }
+         }
+           </ul> 
 }
 @code {
 

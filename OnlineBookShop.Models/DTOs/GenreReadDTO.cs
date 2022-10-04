@@ -2,7 +2,7 @@
 
 namespace OnlineBookShop.Models.DTOs
 {
-    internal class GenreReadDTO
+    public class GenreReadDTO
     {
         [Required]
         public int Id { get; set; }

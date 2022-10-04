@@ -1,0 +1,22 @@
+﻿@page "/order-confirmation"
+
+<h3>Order Confirmation</h3>
+<div class="card" style="width: fit-content; padding: 0.5rem;">
+    <div class="card-text"> Your order has sucessfully been placed</div>
+    <div class=" card-text">
+        Your estimated date of delivery is <b>@DateTime.Now.AddDays(14).ToString("dd-MMM-yyyy")</b>
+        </div><br/>
+        <div class="card-text alert-danger">
+            Please make sure your money is available when the delivery person delivers.<br/>
+            Items will not be handed to you untill payment is made<br/>
+            Ensure what ypu ordered is what is delivered before making payment
+        </div>
+</div>
+
+<a href="/">Continue Shopping</a>
+
+@code {
+
+    
+
+}

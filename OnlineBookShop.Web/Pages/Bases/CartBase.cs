@@ -19,6 +19,8 @@ namespace OnlineBookShop.Web.Pages.Bases
         public string TotalPrice { get; set; }
         public int TotalQuantity { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }    
         protected override async Task OnInitializedAsync()
         {
             try
@@ -99,6 +101,13 @@ namespace OnlineBookShop.Web.Pages.Bases
         {
             CalculateCartSummary();
             CartHttpRepo.RaiseEventOnCartChange(TotalQuantity);
+        }
+
+        protected void ConfirmPayment()
+        {
+
+                NavigationManager.NavigateTo("/checkout");
+            
         }
     }
 }

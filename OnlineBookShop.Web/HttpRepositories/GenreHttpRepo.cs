@@ -16,8 +16,24 @@ namespace OnlineBookShop.Web.HttpRepositories
         {
             try
             {
-                var genres = await _httpClient.GetFromJsonAsync<IEnumerable<GenreReadDTO>>("api/genre");
-                return genres;
+                var response = await _httpClient.GetAsync("api/genre");
+                
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return Enumerable.Empty<GenreReadDTO>().ToList();
+                    }
+                    else
+                    {
+                        return await response.Content.ReadFromJsonAsync<List<GenreReadDTO>>();
+                    }
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Http status - {response.StatusCode} Message - {message}");                 
+                }
             }
             catch (Exception)
             {

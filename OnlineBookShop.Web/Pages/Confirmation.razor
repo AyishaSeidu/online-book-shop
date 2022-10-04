@@ -44,7 +44,7 @@ else
         
         <div class="col-md-3" style="display: flex; flex-direction: column">
 
-            <button class="btn btn-secondary" style="width: 100%">Pay on Delivery</button>
+            <button class="btn btn-secondary" style="width: 100%" @onclick="PayLater">Pay on Delivery</button>
 
             <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" disabled>Pay Now</button>
 
@@ -54,3 +54,12 @@ else
 
 }
 
+@code{
+    [Inject]
+    public NavigationManager navigationManager { set; get; }
+
+    public void PayLater()
+    {
+        navigationManager.NavigateTo("order-confirmation");
+    }
+}

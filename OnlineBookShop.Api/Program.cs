@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextPool<ShopDbContext>(options => options.UseSqlServer(config["OnlineBookShopConnectionString"]));
 builder.Services.AddScoped<IBookRepo, BookRepo>();
 builder.Services.AddScoped<ICartRepo, CartRepo>();
+builder.Services.AddScoped<IGenreRepo, GenreRepo>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 

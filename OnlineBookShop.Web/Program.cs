@@ -11,5 +11,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7129") });
 builder.Services.AddScoped<IBookHttpRepo, BookHttpRepo>();
 builder.Services.AddScoped<ICartHttpRepo, CartHttpRepo>();
+builder.Services.AddScoped<IGenreHttpRepo, GenreHttpRepo>();
 
 await builder.Build().RunAsync();

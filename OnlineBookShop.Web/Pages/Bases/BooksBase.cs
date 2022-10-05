@@ -13,12 +13,27 @@ namespace OnlineBookShop.Web.Pages.Bases
         public ICartHttpRepo CartHttpRepo { get; set; }
         public IEnumerable<BookReadDTO> Books { get; set; }
 
+        [Inject]
+        public IManageBooksLocalStorageHttpRepo ManageBooksLocalStorageHttpRepo { get; set; }
+
+        [Inject]
+        public IManageCartLocalStorageHttpRepo ManageCartLocalStorageHttpRepo { get; set; }
         protected override async Task OnInitializedAsync()
         {
-            Books = await BookHttpRepo.GeAllBooks();
-            var cartItems = await CartHttpRepo.GetItems(HardCoded.UserId);
-            var totalQUantity = cartItems.Sum(i => i.Quantity);
-            CartHttpRepo.RaiseEventOnCartChange(totalQUantity);
+            try
+            {
+                await ClearLocalStorage();
+                Books = await ManageBooksLocalStorageHttpRepo.GetCollection();
+                var cartItems = await ManageCartLocalStorageHttpRepo.GetCollection();
+                var totalQUantity = cartItems.Sum(i => i.Quantity);
+                CartHttpRepo.RaiseEventOnCartChange(totalQUantity);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         protected IOrderedEnumerable<IGrouping<int, BookReadDTO>> GetGroupedBooksByGenre()
@@ -45,6 +60,12 @@ namespace OnlineBookShop.Web.Pages.Bases
 
                 throw;
             }
+        }
+
+        private async Task ClearLocalStorage()
+        {
+            await ManageBooksLocalStorageHttpRepo.RemoveCollection();
+            await ManageCartLocalStorageHttpRepo.RemoveCollection();
         }
     }
 }

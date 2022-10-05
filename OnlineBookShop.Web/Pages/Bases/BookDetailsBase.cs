@@ -21,11 +21,19 @@ namespace OnlineBookShop.Web.Pages.Bases
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
+        [Inject]
+        public IManageBooksLocalStorageHttpRepo ManageBooksLocalStorageHttpRepo { get; set; }
+
+        [Inject]
+        public IManageCartLocalStorageHttpRepo ManageCartLocalStorageHttpRepo { get; set; }
+
+        private List<CartItemReadDTO> CartItems { get; set; }
         protected override async Task OnInitializedAsync()
         {
             try
             {
-                Book = await HttpBookRepo.GetBookk(Id);
+                CartItems = await ManageCartLocalStorageHttpRepo.GetCollection();
+                Book = await GetBookById(Id);
             }
             catch (Exception e)
             {
@@ -40,6 +48,11 @@ namespace OnlineBookShop.Web.Pages.Bases
             try
             {
                 var item = await CartHttpRepo.AddItem(newCartItem);
+                if(item != null)
+                {
+                    CartItems.Add(item);
+                    await ManageCartLocalStorageHttpRepo.SaveCollection(CartItems);
+                }
                 NavigationManager.NavigateTo("/cart");
 
             }
@@ -48,6 +61,16 @@ namespace OnlineBookShop.Web.Pages.Bases
 
                 throw;
             }
+        }
+
+        private async Task<BookReadDTO> GetBookById(int id)
+        {
+            var books = await ManageBooksLocalStorageHttpRepo.GetCollection();
+            if(books!= null)
+            {
+                return books.SingleOrDefault(b => b.Id == id);
+            }
+            return null;
         }
 
     }

@@ -13,6 +13,9 @@ namespace OnlineBookShop.Web.Pages.Bases
 
         public IBookHttpRepo BookHttpRepo { get; set; }
 
+        [Inject]
+        public IManageBooksLocalStorageHttpRepo ManageBooksLocalStorageHttpRepo { get; set; }
+
         public IEnumerable<BookReadDTO> BooksByGenre { set; get; }
 
         public string ErrorMessage { get; set; }
@@ -23,7 +26,7 @@ namespace OnlineBookShop.Web.Pages.Bases
           {
             try
             {
-                BooksByGenre = await BookHttpRepo.GetBooksByGenreId(GenreId);
+                BooksByGenre = await GetBooksByGenre(GenreId);
                 if (BooksByGenre != null)
                 {
                     var anybook = BooksByGenre.FirstOrDefault();
@@ -37,6 +40,19 @@ namespace OnlineBookShop.Web.Pages.Bases
             {
 
                 ErrorMessage = e.Message;
+            }
+        }
+
+        private async Task<IEnumerable<BookReadDTO>> GetBooksByGenre(int id)
+        {
+            var books = await ManageBooksLocalStorageHttpRepo.GetCollection();
+            if (books != null)
+            {
+                return books.Where(book => book.GenreID == id);
+            }
+            else
+            {
+                return await BookHttpRepo.GetBooksByGenreId(id);
             }
         }
     }

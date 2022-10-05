@@ -101,10 +101,11 @@ namespace OnlineBookShop.Web.Pages.Bases
             }
         }
 
-        private void CartChanged()
+        private async void CartChanged()
         {
             CalculateCartSummary();
             CartHttpRepo.RaiseEventOnCartChange(TotalQuantity);
+            await ManageCartLocalStorageHttpRepo.SaveCollection(CartItems);
         }
 
         protected void ConfirmPayment()

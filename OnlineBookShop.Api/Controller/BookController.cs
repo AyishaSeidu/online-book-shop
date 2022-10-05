@@ -67,5 +67,28 @@ namespace OnlineBookShop.Api.Controller
             }
             }
 
+        [HttpGet("{genreId}/GetBooks")]
+        public async Task<ActionResult<IEnumerable<BookReadDTO>>> GetBooksByGenreId(int genreId)
+        {
+            try
+            {
+                var books = await _repository.GetBooksByGenreId(genreId);
+                if (books != null)
+                {
+                    return Ok(_mapper.Map<List<BookReadDTO>>(books));
+                }
+                else
+                {
+                    return NotFound();
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

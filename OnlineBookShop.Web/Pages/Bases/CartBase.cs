@@ -20,12 +20,15 @@ namespace OnlineBookShop.Web.Pages.Bases
         public int TotalQuantity { get; set; }
 
         [Inject]
-        public NavigationManager NavigationManager { get; set; }    
+        public NavigationManager NavigationManager { get; set; }
+
+        [Inject]
+        public IManageCartLocalStorageHttpRepo ManageCartLocalStorageHttpRepo { get; set; }
         protected override async Task OnInitializedAsync()
         {
             try
             {
-                CartItems = await CartHttpRepo.GetItems(4);
+                CartItems = await ManageCartLocalStorageHttpRepo.GetCollection();
                 CartChanged();
             }
             catch (Exception e)
@@ -71,10 +74,11 @@ namespace OnlineBookShop.Web.Pages.Bases
             CalculateTotalPrice();
             CalculateTotalQuantity();
         }
-        private void RemoveItem(int id)
+        private async void RemoveItem(int id)
         {
             var item = GetCartItem(id);
             CartItems.Remove(item);
+            await ManageCartLocalStorageHttpRepo.SaveCollection(CartItems);
         }
 
         protected async Task UpdateQuantity(int id, int quantity)

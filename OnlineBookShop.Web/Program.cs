@@ -12,5 +12,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddScoped<IBookHttpRepo, BookHttpRepo>();
 builder.Services.AddScoped<ICartHttpRepo, CartHttpRepo>();
 builder.Services.AddScoped<IGenreHttpRepo, GenreHttpRepo>();
+builder.Services.AddScoped<IManageBooksLocalStorageHttpRepo, ManageBooksLocalStorageHttpRepo>();
+builder.Services.AddScoped<IManageCartLocalStorageHttpRepo, ManageCartLocalStorageHttpRepo>();
 
 await builder.Build().RunAsync();

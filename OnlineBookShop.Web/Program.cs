@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using OnlineBookShop.Web;
@@ -12,6 +13,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services.AddScoped<IBookHttpRepo, BookHttpRepo>();
 builder.Services.AddScoped<ICartHttpRepo, CartHttpRepo>();
 builder.Services.AddScoped<IGenreHttpRepo, GenreHttpRepo>();
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<IManageBooksLocalStorageHttpRepo, ManageBooksLocalStorageHttpRepo>();
 builder.Services.AddScoped<IManageCartLocalStorageHttpRepo, ManageCartLocalStorageHttpRepo>();
 

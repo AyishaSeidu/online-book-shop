@@ -1,0 +1,15 @@
+﻿@page "/genres/{GenreId:int}"
+@inherits BooksByGenreBase
+
+@if(BooksByGenre==null && ErrorMessage ==null)
+{
+    <Spinner/>
+}
+else if (ErrorMessage != null)
+{
+    <ErrorMessage Message="@ErrorMessage"/>
+}
+else{
+    <h3>@GenreName</h3>
+    <DisplayBooks Books="@BooksByGenre"/>
+}

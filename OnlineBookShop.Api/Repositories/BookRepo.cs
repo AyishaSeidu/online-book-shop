@@ -37,6 +37,12 @@ namespace OnlineBookShop.Api.Repositories
             return book;
         }
 
+        public async Task<IEnumerable<Book>> GetBooksByGenreId(int id)
+        {
+            var books = await _dbContext.Books.Include(b => b.Genre).Where(b => b.GenreID == id).Include(b => b.Author).ToListAsync();
+            return books;
+        }
+
         public Task<Genre> GetGenreByIdAsync(int id)
         {
             throw new NotImplementedException();

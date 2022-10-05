@@ -2,7 +2,7 @@
 @implements IDisposable
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">OnlineBookShop.Web</a>
+        <a class="navbar-brand" href=""><span class="oi oi-cart" aria-hidden="true"></span>&nbsp;Wonseda Bookshop</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,14 +13,14 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> All Books
+                <span class="oi oi-home" aria-hidden="true"></span>&nbsp; All Books
             </NavLink>
         </div>
         <BookGenreNavMenu/>
 
         <div class="nav-item px-3 d-md-none">
             <NavLink class="nav-link" href="/cart">
-                <span class="oi oi-cart" aria-hidden="true"></span> Cart(<b>@cartItemsCount</b>)
+                <span class="oi oi-cart" aria-hidden="true"></span>&nbsp; Cart(<b>@cartItemsCount</b>)
             </NavLink>
         </div>
     </nav>

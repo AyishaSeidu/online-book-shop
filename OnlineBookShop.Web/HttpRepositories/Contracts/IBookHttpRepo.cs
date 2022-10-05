@@ -7,5 +7,7 @@ namespace OnlineBookShop.Web.HttpRepositories.Contracts
         Task<IEnumerable<BookReadDTO>> GeAllBooks();
 
         Task<BookReadDTO> GetBookk(int id);
+
+        Task<IEnumerable<BookReadDTO>> GetBooksByGenreId(int id);
     }
 }

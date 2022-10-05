@@ -55,5 +55,35 @@ namespace OnlineBookShop.Web.HttpRepositories
                 throw;
             }
         }
+
+        public async Task<IEnumerable<BookReadDTO>> GetBooksByGenreId(int id)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"api/books/{id}/getbooks");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if(response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return Enumerable.Empty<BookReadDTO>();
+                    }
+                    else
+                    {
+                        return await response.Content.ReadFromJsonAsync<IEnumerable<BookReadDTO>>();
+                    }
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Http status code - {response.StatusCode}. Message - {message}");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }
